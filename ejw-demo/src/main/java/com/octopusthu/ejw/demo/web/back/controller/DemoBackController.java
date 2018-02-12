@@ -1,4 +1,4 @@
-package com.octopusthu.ejw.demo.web.back;
+package com.octopusthu.ejw.demo.web.back.controller;
 
 import com.octopusthu.ejw.web.back.controller.BackBaseController;
 import org.springframework.web.bind.annotation.RequestMapping;

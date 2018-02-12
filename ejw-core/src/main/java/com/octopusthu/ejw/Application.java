@@ -6,8 +6,10 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
 @Order(Ordered.HIGHEST_PRECEDENCE + 20)
-public class Application extends SpringBootServletInitializer {
-    @Override
+public class Application
+        //extends SpringBootServletInitializer
+{
+    // @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(RootApplicationContextConfig.class);
     }

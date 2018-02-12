@@ -1,11 +1,10 @@
 package com.octopusthu.ejw.demo;
 
+import com.octopusthu.ejw.RootApplicationContextConfig;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-@EnableAutoConfiguration
 public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(RootApplicationContextConfig.class, args);
     }
 }
