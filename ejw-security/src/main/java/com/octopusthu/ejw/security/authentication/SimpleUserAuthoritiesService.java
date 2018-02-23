@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import lombok.Setter;
+import org.springframework.util.CollectionUtils;
 
 /**
  * @author zhangyu octopusthu@gmail.com
