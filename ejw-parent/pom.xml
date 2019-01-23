@@ -13,12 +13,18 @@
   <packaging>pom</packaging>
 
   <properties>
-    <java.version>1.8</java.version>
-    <ejw.version>1.2.0-SNAPSHOT</ejw.version>
+
+    <!-- Dependencies versions -->
+    <ejw.version>${project.version}</ejw.version>
     <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
     <spring-boot-admin.version>2.1.1</spring-boot-admin.version>
-    <site-maven-plugin.version>0.12</site-maven-plugin.version>
-    <repositoryName>ejw</repositoryName>
+
+    <!-- GitHub plugin properties -->
+    <github.site-maven-plugin.version>0.12</github.site-maven-plugin.version>
+    <github.global.server>github</github.global.server>
+    <github.site-maven-plugin.repositoryName>ejw</github.site-maven-plugin.repositoryName>
+    <github.site-maven-plugin.repositoryOwner>octopusthu</github.site-maven-plugin.repositoryOwner>
+
   </properties>
 
   <dependencyManagement>
@@ -28,27 +34,6 @@
       <dependency>
         <groupId>com.octopusthu.ejw</groupId>
         <artifactId>ejw-core</artifactId>
-        <version>${ejw.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.octopusthu.ejw</groupId>
-        <artifactId>ejw-security</artifactId>
-        <version>${ejw.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.octopusthu.ejw</groupId>
-        <artifactId>ejw-admin</artifactId>
-        <version>${ejw.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.octopusthu.ejw</groupId>
-        <artifactId>ejw-common-components</artifactId>
-        <version>${ejw.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.octopusthu.ejw</groupId>
-        <artifactId>ejw-starter-overlay</artifactId>
-        <type>war</type>
         <version>${ejw.version}</version>
       </dependency>
 
@@ -74,40 +59,23 @@
       </dependency>
 
       <!-- other dependencies -->
-      <dependency>
-        <groupId>javax.inject</groupId>
-        <artifactId>javax.inject</artifactId>
-        <version>1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-collections4</artifactId>
-        <version>4.1</version>
-      </dependency>
 
     </dependencies>
   </dependencyManagement>
 
+  <!-- Must-have dependencies -->
   <dependencies>
-
-    <!-- must-have dependencies -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
     </dependency>
-
   </dependencies>
 
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-clean-plugin</artifactId>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
             <source>${java.version}</source>
@@ -115,15 +83,6 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <configuration>
-            <packagingExcludes>**/empty.tmp</packagingExcludes>
-            <failOnMissingWebXml>false</failOnMissingWebXml>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <configuration>
             <altDeploymentRepository>
@@ -134,20 +93,15 @@
         <plugin>
           <groupId>com.github.github</groupId>
           <artifactId>site-maven-plugin</artifactId>
-          <version>${site-maven-plugin.version}</version>
+          <version>${github.site-maven-plugin.version}</version>
           <configuration>
-            <server>github</server>
-            <repositoryName>${repositoryName}</repositoryName>
-            <repositoryOwner>octopusthu</repositoryOwner>
+            <repositoryName>${github.site-maven-plugin.repositoryName}</repositoryName>
+            <repositoryOwner>${github.site-maven-plugin.repositoryOwner}</repositoryOwner>
             <branch>refs/heads/maven</branch>
             <merge>true</merge>
-            <message>
-              Artifacts for ${project.name}/${project.artifactId}/${project.version}
-            </message>
+            <message>Artifacts for ${project.artifactId}/${project.version}</message>
             <noJekyll>true</noJekyll>
-            <outputDirectory>
-              ${project.build.directory}/repo-stage
-            </outputDirectory>
+            <outputDirectory>${project.build.directory}/repo-stage</outputDirectory>
             <includes>
               <include>**/*</include>
             </includes>
@@ -164,6 +118,7 @@
       </plugins>
     </pluginManagement>
 
+    <!-- Must-have plugins -->
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -175,12 +130,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <developers>
-    <developer>
-      <id>octopusthu</id>
-      <name>octopusthu</name>
-      <email>octopusthu@gmail.com</email>
-    </developer>
-  </developers>
 </project>
