@@ -20,10 +20,11 @@
     <spring-boot-admin.version>2.1.1</spring-boot-admin.version>
 
     <!-- GitHub plugin properties -->
-    <github.site-maven-plugin.version>0.12</github.site-maven-plugin.version>
     <github.global.server>github</github.global.server>
-    <github.site-maven-plugin.repositoryName>ejw</github.site-maven-plugin.repositoryName>
-    <github.site-maven-plugin.repositoryOwner>octopusthu</github.site-maven-plugin.repositoryOwner>
+    <github.repositoryName>ejw</github.repositoryName>
+    <github.repositoryOwner>octopusthu</github.repositoryOwner>
+    <github.branch>maven</github.branch>
+    <github.site-maven-plugin.version>0.12</github.site-maven-plugin.version>
 
   </properties>
 
@@ -95,11 +96,11 @@
           <artifactId>site-maven-plugin</artifactId>
           <version>${github.site-maven-plugin.version}</version>
           <configuration>
-            <repositoryName>${github.site-maven-plugin.repositoryName}</repositoryName>
-            <repositoryOwner>${github.site-maven-plugin.repositoryOwner}</repositoryOwner>
-            <branch>refs/heads/maven</branch>
+            <repositoryName>${github.repositoryName}</repositoryName>
+            <repositoryOwner>${github.repositoryOwner}</repositoryOwner>
+            <branch>refs/heads/${github.branch}</branch>
             <merge>true</merge>
-            <message>Artifacts for ${project.artifactId}/${project.version}</message>
+            <message>Maven artifacts for ${project.artifactId}/${project.version}</message>
             <noJekyll>true</noJekyll>
             <outputDirectory>${project.build.directory}/repo-stage</outputDirectory>
             <includes>
@@ -108,10 +109,10 @@
           </configuration>
           <executions>
             <execution>
-              <phase>deploy</phase>
               <goals>
                 <goal>site</goal>
               </goals>
+              <phase>deploy</phase>
             </execution>
           </executions>
         </plugin>
@@ -130,4 +131,15 @@
       </plugin>
     </plugins>
   </build>
+
+  <repositories>
+    <repository>
+      <id>ejw</id>
+      <url>https://raw.githubusercontent.com/${github.repositoryOwner}/${github.repositoryName}/${github.branch}</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
 </project>

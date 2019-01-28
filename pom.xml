@@ -14,7 +14,7 @@
     <!--<module>ejw-admin</module>-->
     <!--<module>ejw-common-components</module>-->
     <!--<module>ejw-starter-overlay</module>-->
-    <!--<module>ejw-demo</module>-->
+    <module>ejw-sample</module>
   </modules>
 
   <build>
