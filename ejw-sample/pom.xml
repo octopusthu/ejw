@@ -15,4 +15,14 @@
   <dependencies>
   </dependencies>
 
+  <repositories>
+    <repository>
+      <id>ejw</id>
+      <url>https://raw.githubusercontent.com/octopusthu/ejw/maven</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
 </project>
