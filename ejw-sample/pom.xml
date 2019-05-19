@@ -7,6 +7,7 @@
     <groupId>com.octopusthu.ejw</groupId>
     <artifactId>ejw-parent</artifactId>
     <version>1.2.0-SNAPSHOT</version>
+    <relativePath></relativePath>
   </parent>
   <artifactId>ejw-sample</artifactId>
   <description>A sample application built with EJW, containing EJW usage examples and other Java code samples.
@@ -31,9 +32,20 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
