@@ -17,19 +17,6 @@
     <module>ejw-sample</module>
   </modules>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>2.8.2</version>
-        <configuration>
-          <altDeploymentRepository>
-            Repo.stage::default::file://${project.build.directory}/repo-stage
-          </altDeploymentRepository>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
   <developers>
     <developer>
       <id>octopusthu</id>
@@ -37,4 +24,5 @@
       <email>octopusthu@gmail.com</email>
     </developer>
   </developers>
+
 </project>
