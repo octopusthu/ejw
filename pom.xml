@@ -15,6 +15,7 @@
     <!--<module>ejw-common-components</module>-->
     <!--<module>ejw-starter-overlay</module>-->
     <module>ejw-sample</module>
+    <module>ejw-boot-admin-server</module>
   </modules>
 
   <developers>

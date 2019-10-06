@@ -1,1 +1,5 @@
 **/target/
+
+**/resources/application-local.properties
+**/resources/application-dev.properties
+**/resources/application-prod.properties
