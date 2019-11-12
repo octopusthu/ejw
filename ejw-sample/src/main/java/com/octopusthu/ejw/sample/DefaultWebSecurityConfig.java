@@ -10,7 +10,7 @@ public class DefaultWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers();
+        web.ignoring().antMatchers("/**");
     }
 
     @Override
