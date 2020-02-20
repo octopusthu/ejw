@@ -18,7 +18,7 @@
     <!-- Dependencies versions -->
     <ejw.version>${project.version}</ejw.version>
     <spring-cloud-dependencies.version>Hoxton.SR1</spring-cloud-dependencies.version>
-    <spring-boot-admin.version>2.2.0-SNAPSHOT</spring-boot-admin.version>
+    <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
 
   </properties>
 
