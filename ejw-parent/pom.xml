@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.octopusthu.ejw</groupId>
   <artifactId>ejw-parent</artifactId>
@@ -19,6 +20,7 @@
     <ejw.version>${project.version}</ejw.version>
     <spring-cloud-dependencies.version>Hoxton.SR1</spring-cloud-dependencies.version>
     <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
+    <guava.version>29.0-jre</guava.version>
 
   </properties>
 
@@ -49,6 +51,11 @@
       </dependency>
 
       <!-- other dependencies -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
