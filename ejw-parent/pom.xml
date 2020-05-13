@@ -135,12 +135,12 @@
   <!--    </repository>-->
   <!--  </repositories>-->
 
-  <!--  <distributionManagement>-->
-  <!--    <repository>-->
-  <!--      <id>github-octopusthu-ejw</id>-->
-  <!--      <name>GitHub octopusthu ejw Apache Maven Packages</name>-->
-  <!--      <url>https://maven.pkg.github.com/octopusthu/ejw</url>-->
-  <!--    </repository>-->
-  <!--  </distributionManagement>-->
+    <distributionManagement>
+      <repository>
+        <id>github-octopusthu-ejw</id>
+        <name>GitHub octopusthu ejw Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/octopusthu/ejw</url>
+      </repository>
+    </distributionManagement>
 
 </project>
