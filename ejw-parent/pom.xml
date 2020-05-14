@@ -16,6 +16,9 @@
 
   <properties>
 
+    <!-- Global properties -->
+    <maven.compiler.release>11</maven.compiler.release>
+
     <!-- Dependencies versions -->
     <ejw.version>${project.version}</ejw.version>
     <spring-cloud-dependencies.version>Hoxton.SR1</spring-cloud-dependencies.version>
@@ -111,6 +114,16 @@
   <build>
 
     <plugins>
+
+      <!-- Maven plugins -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
 
       <!-- Must-have plugins -->
       <plugin>
