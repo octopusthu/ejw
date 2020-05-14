@@ -138,16 +138,6 @@
 
   </build>
 
-  <!-- Not able to get GitHub Packages going yet... Build locally for the time being. -->
-
-  <!--  <repositories>-->
-  <!--    <repository>-->
-  <!--      <id>github-octopusthu-ejw</id>-->
-  <!--      <name>GitHub octopusthu ejw Apache Maven Packages</name>-->
-  <!--      <url>https://maven.pkg.github.com/octopusthu/ejw</url>-->
-  <!--    </repository>-->
-  <!--  </repositories>-->
-
     <distributionManagement>
       <repository>
         <id>github-octopusthu-ejw</id>
