@@ -72,7 +72,7 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- dev tools -->
+    <!-- spring boot tools -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
