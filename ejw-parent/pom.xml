@@ -1,169 +1,180 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.octopusthu.ejw</groupId>
-  <artifactId>ejw-parent</artifactId>
-  <version>1.4.0-RELEASE</version>
-  <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.octopusthu.ejw</groupId>
+    <artifactId>ejw-parent</artifactId>
+    <version>1.4.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.3.RELEASE</version>
-    <relativePath/>
-  </parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/>
+    </parent>
 
-  <properties>
+    <properties>
 
-    <!-- Global properties -->
-    <maven.compiler.release>11</maven.compiler.release>
+        <!-- Global properties -->
+        <maven.compiler.release>11</maven.compiler.release>
 
-    <!-- Dependencies versions -->
-    <ejw.version>${project.version}</ejw.version>
-    <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
-    <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
-    <guava.version>30.0-jre</guava.version>
+        <!-- Dependencies versions -->
+        <ejw.version>${project.version}</ejw.version>
+        <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
+        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
+        <guava.version>30.0-jre</guava.version>
 
-  </properties>
+    </properties>
 
-  <dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- ejw dependencies -->
+
+            <!-- spring-cloud dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- spring-boot-admin dependencies -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <!-- other dependencies -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
-      <!-- ejw dependencies -->
+        <!-- must-have dependencies -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
-      <!-- spring-cloud dependencies -->
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud-dependencies.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+        <!-- spring boot tools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
 
-      <!-- spring-boot-admin dependencies -->
-      <dependency>
-        <groupId>de.codecentric</groupId>
-        <artifactId>spring-boot-admin-starter-server</artifactId>
-        <version>${spring-boot-admin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>de.codecentric</groupId>
-        <artifactId>spring-boot-admin-starter-client</artifactId>
-        <version>${spring-boot-admin.version}</version>
-      </dependency>
+        <!-- tests -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-      <!-- other dependencies -->
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
+        <!-- other dependencies -->
 
     </dependencies>
-  </dependencyManagement>
 
-  <dependencies>
+    <build>
 
-    <!-- must-have dependencies -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
+        <plugins>
 
-    <!-- spring boot tools -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+            <!-- Maven plugins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            **/application-*.properties,
+                            **/application-*.yml
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
 
-    <!-- tests -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
+            <!-- Must-have plugins -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
+                </configuration>
+            </plugin>
 
-    <!-- other dependencies -->
+        </plugins>
 
-  </dependencies>
+    </build>
 
-  <build>
+    <distributionManagement>
+        <repository>
+            <id>github-octopusthu-ejw</id>
+            <name>GitHub octopusthu ejw Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/octopusthu/ejw</url>
+        </repository>
+    </distributionManagement>
 
-    <plugins>
+    <repositories>
 
-      <!-- Maven plugins -->
+        <!-- spring snapshots -->
+        <repository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
 
-      <!-- Must-have plugins -->
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <executable>true</executable>
-        </configuration>
-      </plugin>
+    </repositories>
+    <pluginRepositories>
 
-    </plugins>
+        <!-- spring snapshots -->
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
 
-  </build>
-
-  <distributionManagement>
-    <repository>
-      <id>github-octopusthu-ejw</id>
-      <name>GitHub octopusthu ejw Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/octopusthu/ejw</url>
-    </repository>
-  </distributionManagement>
-
-  <repositories>
-
-    <!-- spring snapshots -->
-    <repository>
-      <id>spring-snapshots</id>
-      <url>https://repo.spring.io/snapshot</url>
-      <snapshots><enabled>true</enabled></snapshots>
-    </repository>
-    <repository>
-      <id>spring-milestones</id>
-      <url>https://repo.spring.io/milestone</url>
-    </repository>
-
-  </repositories>
-  <pluginRepositories>
-
-    <!-- spring snapshots -->
-    <pluginRepository>
-      <id>spring-snapshots</id>
-      <url>https://repo.spring.io/snapshot</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>spring-milestones</id>
-      <url>https://repo.spring.io/milestone</url>
-    </pluginRepository>
-
-  </pluginRepositories>
+    </pluginRepositories>
 
 </project>
