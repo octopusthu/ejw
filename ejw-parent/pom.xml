@@ -116,10 +116,8 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>
-                            **/application-*.properties,
-                            **/application-*.yml
-                        </exclude>
+                        <exclude>**/application-*.properties</exclude>
+                        <exclude>**/application-*.yml</exclude>
                     </excludes>
                 </configuration>
             </plugin>
