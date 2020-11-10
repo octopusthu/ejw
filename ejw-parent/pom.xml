@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.octopusthu.ejw</groupId>
     <artifactId>ejw-parent</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.1-RELEASE</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -116,10 +116,8 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>
-                            **/application-*.properties,
-                            **/application-*.yml
-                        </exclude>
+                        <exclude>**/application-*.properties</exclude>
+                        <exclude>**/application-*.yml</exclude>
                     </excludes>
                 </configuration>
             </plugin>
