@@ -1,5 +1,20 @@
-**/target/
 
-**/resources/application-local.properties
-**/resources/application-dev.properties
-**/resources/application-prod.properties
+### macOS ###
+.DS_Store
+
+### Java ###
+**/target/
+**/WEB-INF/classes/
+**/WEB-INF/lib/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code & Eclipse ###
+.classpath
+.factorypath
+.project
+**/.settings/
