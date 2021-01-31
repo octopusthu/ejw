@@ -1,15 +1,9 @@
 # ejw-parent
 
-## Releases
+## Next Release `1.4.2`
 
-### Current Release `1.4.1-RELEASE`
-                   
-- Ignore `application-*.properties` and `application-*.yml` files in packaged jar.
+- Add [Spring REST Docs](https://spring.io/projects/spring-restdocs) support
 
-### Next Release `1.4.2-RELEASE`
-
+- Upgrade to Spring Boot `2.4.2` and Spring Cloud `2020.0.1`.
 - Remove Spring Milestones and Snapshots repositories.
-
-### Future Releases
-
-- Upgrade to Spring Boot `2.4.0` and Spring Cloud `?`.
+- Remove "-RELEASE" suffix from release version, staying aligned with spring boot.
