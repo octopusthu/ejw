@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
-class HelloJavaRestControllerTest {
+class HelloJavaRestControllerTests {
 
     @Autowired
     private MockMvc mockMvc;

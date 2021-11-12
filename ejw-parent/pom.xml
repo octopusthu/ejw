@@ -21,17 +21,13 @@
 
         <!-- Dependencies versions -->
         <ejw.version>${project.version}</ejw.version>
-        <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
-        <guava.version>30.1.1-jre</guava.version>
-        <spring.restdocs.version>2.0.5.RELEASE</spring.restdocs.version>
-        <asciidoctor-maven-plugin.version>2.1.0</asciidoctor-maven-plugin.version>
+        <spring-cloud-dependencies.version>2020.0.4</spring-cloud-dependencies.version>
+        <guava.version>31.0.1-jre</guava.version>
 
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
-            <!-- ejw dependencies -->
 
             <!-- spring-cloud dependencies -->
             <dependency>
@@ -41,6 +37,8 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- ejw dependencies -->
 
             <!-- other dependencies -->
             <dependency>
@@ -112,59 +110,7 @@
                     </configuration>
                 </plugin>
 
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>copy-resources</id>
-                            <phase>prepare-package</phase>
-                            <goals>
-                                <goal>copy-resources</goal>
-                            </goals>
-                            <configuration>
-                                <outputDirectory>
-                                    ${project.build.outputDirectory}/static/docs
-                                </outputDirectory>
-                                <resources>
-                                    <resource>
-                                        <directory>
-                                            ${project.build.directory}/generated-docs
-                                        </directory>
-                                    </resource>
-                                </resources>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
                 <!-- Spring Boot plugins -->
-
-                <!-- Asciidoctor -->
-                <plugin>
-                    <groupId>org.asciidoctor</groupId>
-                    <artifactId>asciidoctor-maven-plugin</artifactId>
-                    <version>${asciidoctor-maven-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>generate-docs</id>
-                            <phase>prepare-package</phase>
-                            <goals>
-                                <goal>process-asciidoc</goal>
-                            </goals>
-                            <configuration>
-                                <backend>html</backend>
-                                <doctype>book</doctype>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.springframework.restdocs</groupId>
-                            <artifactId>spring-restdocs-asciidoctor</artifactId>
-                            <version>${spring.restdocs.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
 
             </plugins>
         </pluginManagement>
