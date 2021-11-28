@@ -1,12 +1,25 @@
 package com.octopusthu.ejw.sample;
 
+import com.octopusthu.ejw.sample.dummy.Dummy;
+import com.octopusthu.ejw.sample.multireadrequest.MultiReadTestingConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AdviceMode;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
+/**
+ * The sample application.
+ * <p>
+ * Auto component scan is disabled by referencing a placeholder class.
+ *
+ * @author octopusthu@gmail.com
+ */
 @SpringBootApplication
+@ComponentScan(basePackageClasses = Dummy.class)
+@Import({
+    DefaultWebSecurityConfig.class,
+    MultiReadTestingConfig.class
+})
 public class SampleApplication {
 
     public static void main(String[] args) {
