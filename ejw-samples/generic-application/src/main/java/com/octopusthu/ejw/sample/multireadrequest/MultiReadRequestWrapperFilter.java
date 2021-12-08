@@ -12,9 +12,8 @@ import java.io.IOException;
 @Slf4j
 public class MultiReadRequestWrapperFilter extends HttpFilter {
     @Override
-    protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        log.debug("MultiReadRequestWrapperFilter.doFilter is called");
-
+    protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+        throws IOException, ServletException {
         super.doFilter(new MultiReadHttpServletRequest(request), response, chain);
     }
 }

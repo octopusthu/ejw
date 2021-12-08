@@ -12,9 +12,9 @@ import org.springframework.security.web.authentication.switchuser.SwitchUserFilt
 
 @Configuration
 @Import({
-    MultiReadTestingController.class
+    MultiReadRequestTestingController.class
 })
-public class MultiReadTestingConfig {
+public class MultiReadRequestTestingConfig {
 
     /**
      * A Spring Security filter chain to test {@link MultiReadHttpServletRequest}.
@@ -34,12 +34,15 @@ public class MultiReadTestingConfig {
                     .anyRequest().permitAll()
                 );
 
-            // Wrap the request at the very start of the filter chain
-            http.addFilterBefore(new MultiReadRequestWrapperFilter(), ChannelProcessingFilter.class);
+            // Print form parameters before reading request body
+            http.addFilterBefore(new FormParametersPrinterFilter(), ChannelProcessingFilter.class);
+
+            // Wrap with MultiReadHttpServletRequest and read the request body
+            http.addFilterAfter(new MultiReadRequestWrapperFilter(), ChannelProcessingFilter.class);
 
             // Read the request at the very end of the filter chain so as
             // not to interfere with the default Spring Security filters
-            http.addFilterAfter(new MultiReadTestingFilter(), SwitchUserFilter.class);
+            http.addFilterAfter(new MultiReadRequestTestingFilter(), SwitchUserFilter.class);
 
         }
 

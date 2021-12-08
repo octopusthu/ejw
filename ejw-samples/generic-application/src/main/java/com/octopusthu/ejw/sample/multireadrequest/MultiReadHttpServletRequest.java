@@ -18,34 +18,29 @@ import java.io.*;
  */
 @Slf4j
 public class MultiReadHttpServletRequest extends HttpServletRequestWrapper {
-    private ByteArrayOutputStream cachedBytes;
+    private final ByteArrayOutputStream cachedBytes;
 
-    public MultiReadHttpServletRequest(HttpServletRequest request) {
+    public MultiReadHttpServletRequest(HttpServletRequest request) throws IOException {
         super(request);
+
+        log.debug("MultiReadHttpServletRequest constructor is called");
+
+        // Cache on construct
+        cachedBytes = new ByteArrayOutputStream();
+        IOUtils.copy(super.getInputStream(), cachedBytes);
     }
 
     @Override
-    public ServletInputStream getInputStream() throws IOException {
+    public ServletInputStream getInputStream() {
         log.debug("MultiReadHttpServletRequest.getInputStream() is called");
-
-        // Cache on first read
-        if (this.cachedBytes == null) {
-            cacheInputStream();
-        }
-
         return new CachedServletInputStream(this.cachedBytes);
     }
 
     @Override
-    public BufferedReader getReader() throws IOException {
+    public BufferedReader getReader() {
         log.debug("MultiReadHttpServletRequest.getReader() is called");
 
         return new BufferedReader(new InputStreamReader(getInputStream()));
-    }
-
-    private void cacheInputStream() throws IOException {
-        cachedBytes = new ByteArrayOutputStream();
-        IOUtils.copy(super.getInputStream(), cachedBytes);
     }
 
     /**
