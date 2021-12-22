@@ -14,7 +14,7 @@ import java.io.*;
  * <a href="https://stackoverflow.com/questions/10210645/http-servlet-request-lose-params-from-post-body-after-read-it-once">
  * this Stack Overflow post</a>.
  *
- * @author octopusthu@gmail.com
+ * @author figozhang
  */
 @Slf4j
 public class MultiReadHttpServletRequest extends HttpServletRequestWrapper {
