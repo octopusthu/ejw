@@ -6,6 +6,7 @@
     <artifactId>ejw-parent</artifactId>
     <version>1.4.2-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <description>A parent for the spring-boot-starter-parent.</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -32,7 +33,7 @@
     <dependencyManagement>
         <dependencies>
 
-            <!-- spring-cloud dependencies -->
+            <!-- Spring Cloud dependencies -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -43,7 +44,7 @@
 
             <!-- ejw dependencies -->
 
-            <!-- other dependencies -->
+            <!-- Define dependency versions not included by Spring Boot -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
@@ -60,14 +61,14 @@
 
     <dependencies>
 
-        <!-- must-have dependencies -->
+        <!-- Must-have dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- spring boot tools -->
+        <!-- Spring Boot tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -79,25 +80,24 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- tests -->
+        <!-- Test-only dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- other dependencies -->
+        <!-- Other dependencies -->
 
     </dependencies>
 
@@ -106,14 +106,14 @@
         <pluginManagement>
             <plugins>
 
-                <!-- Maven plugins -->
+                <!-- Exclude profile-specific property files from the jar -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <configuration>
                         <excludes>
-                            <exclude>src/main/resources/application-*.properties</exclude>
-                            <exclude>src/main/resources/application-*.yml</exclude>
+                            <exclude>**/application-*.properties</exclude>
+                            <exclude>**/application-*.yml</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
@@ -125,9 +125,11 @@
 
         <plugins>
 
-            <!-- Maven plugins -->
-
-            <!-- Spring Boot plugins -->
+            <!-- Include Spring Boot Maven plugin to create an executable jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
         </plugins>
 
