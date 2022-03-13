@@ -7,6 +7,9 @@
 **/WEB-INF/classes/
 **/WEB-INF/lib/
 
+# spring boot
+**/resources/application-*.properties
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
