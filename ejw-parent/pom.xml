@@ -1,39 +1,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.octopusthu.ejw</groupId>
-    <artifactId>ejw-parent</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <description>A parent for the spring-boot-starter-parent.</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.2</version>
+        <version>3.0.1</version>
         <relativePath/>
     </parent>
+
+    <groupId>com.octopusthu.ejw</groupId>
+    <artifactId>ejw-parent</artifactId>
+    <version>1.5.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>A parent for the spring-boot-starter-parent.</description>
 
     <properties>
 
         <!-- Global properties -->
-        <maven.compiler.release>11</maven.compiler.release>
 
-        <!-- Dependencies versions -->
-        <ejw.version>${project.version}</ejw.version>
-        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
-        <guava.version>31.0.1-jre</guava.version>
+        <!-- Dependencies versions not managed by Spring Boot -->
         <commons-io.version>2.11.0</commons-io.version>
-        <spring.restdocs.version>2.0.5.RELEASE</spring.restdocs.version>
-        <asciidoctor-maven-plugin.version>2.1.0</asciidoctor-maven-plugin.version>
+        <guava.version>31.1-jre</guava.version>
+        <spring-cloud-dependencies.version>2022.0.0</spring-cloud-dependencies.version>
+        <spring.restdocs.version>3.0.0</spring.restdocs.version>
+        <asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
 
     </properties>
 
     <dependencyManagement>
         <dependencies>
 
-            <!-- Spring Cloud dependencies -->
+            <!-- Dependencies not managed by Spring Boot -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -43,18 +52,6 @@
             </dependency>
 
             <!-- ejw dependencies -->
-
-            <!-- Define dependency versions not included by Spring Boot -->
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -97,8 +94,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Other dependencies -->
-
     </dependencies>
 
     <build>
@@ -135,6 +130,7 @@
 
     </build>
 
+    <!-- Release to GitHub Packages -->
     <distributionManagement>
         <repository>
             <id>github-octopusthu-ejw</id>

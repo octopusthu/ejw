@@ -1,4 +1,5 @@
-package com.octopusthu.ejw.sample.requestwrapper;
 /**
  * HttpServletRequestWrapper samples.
  */
+
+package com.octopusthu.ejw.sample.requestwrapper;
