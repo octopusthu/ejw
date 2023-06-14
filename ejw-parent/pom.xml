@@ -23,7 +23,7 @@
         <!-- Dependencies versions -->
         <ejw.version>${project.version}</ejw.version>
         <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
-        <guava.version>31.0.1-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
         <commons-io.version>2.11.0</commons-io.version>
         <spring.restdocs.version>2.0.5.RELEASE</spring.restdocs.version>
         <asciidoctor-maven-plugin.version>2.1.0</asciidoctor-maven-plugin.version>
